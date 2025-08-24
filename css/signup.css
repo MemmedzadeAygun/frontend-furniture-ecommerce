@@ -64,7 +64,7 @@ main{
 }
 .sub-main{
     width: 85%;
-    height: 500px;
+    height: 600px;
     /* border: 1px solid black; */
     margin: auto;
     display: flex;
@@ -133,7 +133,6 @@ footer{
 
 .sub-footer .f_part4 h4{
     color: grey;
-    margin-left: 30px;
 }
 .f_part41{
     display: flex;
@@ -165,6 +164,7 @@ form label a{
 }
 form .element{
     width: 400px;
+    height: 100px;
 }
 .element input{
     width: 100%;
@@ -185,4 +185,13 @@ form button {
     border: 0;
     border: 1px solid black;
     margin-top: 15px;
+}
+.error {
+  color: red;
+  font-size: 12px;
+  display: none; 
+}
+
+.error::before {
+  content: "⚠ ";
 }

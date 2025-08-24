@@ -105,7 +105,6 @@ footer{
     padding-top: 10px;
     list-style-type: none;
     margin-left: 50px;
-    /* color: grey; */
 }
 .sub-footer .f_part2 h4{
     color: grey;
@@ -116,7 +115,6 @@ footer{
 }
 .sub-footer .f_part3{
     width: 200px;
-    /* border: 1px solid black; */
 }
 .sub-footer .f_part3 ul{
     padding-top: 10px;
@@ -187,4 +185,13 @@ form button {
     border: 0;
     border: 1px solid black;
     margin-top: 15px;
+}
+.error {
+  color: red;
+  font-size: 12px;
+  display: none; 
+}
+
+.error::before {
+  content: "⚠ ";
 }
