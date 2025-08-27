@@ -8,3 +8,7 @@ function loadOnUser(){
 }
 
 loadOnUser();
+
+document.getElementById('saleBtn').addEventListener('click',(e) => {
+    window.location.href = "user-products.html";
+})
