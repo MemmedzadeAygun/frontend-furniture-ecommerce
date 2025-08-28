@@ -26,6 +26,9 @@ function loadOnTable(){
                 </td>
                 <td>${product.price}</td>
                 <td>${product.rating}</td>
+                <td>
+                    <button type="button" class="btn btn-primary edit-btn" data-id="${product.id}">Edit</button>
+                </td>
             </tr>
         `
     });
@@ -34,3 +37,11 @@ function loadOnTable(){
 }
 
 loadOnTable();
+
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('edit-btn')) {
+        let productId = e.target.getAttribute('data-id');
+        console.log(productId);
+        window.location.href = `newProduct.html?id=${productId}`
+    }
+})

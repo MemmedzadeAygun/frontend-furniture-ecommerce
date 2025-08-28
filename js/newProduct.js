@@ -86,3 +86,27 @@ function createProduct(){
 }
 
 createProduct();
+
+function editProduct(){
+    let urlParams = new URLSearchParams(window.location.search);
+    let productId = urlParams.get('id');
+    
+    if (productId) {
+        let products = JSON.parse(localStorage.getItem('products')) || [];
+        
+        let existingProduct = products.find(product => product.id == productId);
+
+        if (existingProduct) {
+            document.getElementById('brand').value = existingProduct.brand;
+            document.getElementById('model').value = existingProduct.model;
+            document.getElementById('category').value = existingProduct.category;
+            document.getElementById('description').value = existingProduct.description;
+            document.getElementById('price').value = existingProduct.price;
+            document.getElementById('rating').value = existingProduct.rating;
+            document.getElementById('img-url').value = existingProduct.imgUrl;
+        }
+    }
+    
+}
+
+editProduct();
