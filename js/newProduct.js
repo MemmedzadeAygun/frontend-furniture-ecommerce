@@ -1,4 +1,4 @@
-function createProduct(){
+function createProduct() {
     let form = document.getElementById('add-product');
 
     form.addEventListener('submit', (event) => {
@@ -77,23 +77,35 @@ function createProduct(){
             ownerId: logedInUser.id
         };
 
-        products.push(newProduct);
-        localStorage.setItem('products', JSON.stringify(products));
-        alert('Product added successfully');
-        form.reset();
+        let product_id = localStorage.getItem('productId');
+        if (product_id !== null) {
+            updateProduct(parseInt(product_id, 10), newProduct);
+            localStorage.removeItem('productId');
+        }
+        else {
+            products.push(newProduct);
+            localStorage.setItem('products', JSON.stringify(products));
+            alert('Product added successfully');
+            window.location.href = "user-products.html";
+            form.reset();
+        }
+
 
     })
 }
 
 createProduct();
 
-function editProduct(){
+function editProduct() {
     let urlParams = new URLSearchParams(window.location.search);
     let productId = urlParams.get('id');
+    localStorage.setItem('productId', productId);
     
     if (productId) {
+        document.querySelector('form button').textContent = "Update";
+        document.querySelector('.sub-main h3').textContent = "Update Product";
         let products = JSON.parse(localStorage.getItem('products')) || [];
-        
+
         let existingProduct = products.find(product => product.id == productId);
 
         if (existingProduct) {
@@ -106,7 +118,40 @@ function editProduct(){
             document.getElementById('img-url').value = existingProduct.imgUrl;
         }
     }
-    
+
 }
 
 editProduct();
+
+function updateProduct(productid, product) {
+
+    let products = JSON.parse(localStorage.getItem('products')) || [];
+
+    let existingProduct = products.find(product => product.id == productid);
+
+    if (existingProduct) {
+        existingProduct.brand = product.brand;
+        existingProduct.model = product.model;
+        existingProduct.category = product.category;
+        existingProduct.description = product.description;
+        existingProduct.price = product.price;
+        existingProduct.rating = product.rating;
+        existingProduct.imgUrl = product.imgUrl;
+
+        localStorage.setItem('products', JSON.stringify(products));
+        Swal.fire({
+            title: "Product update successfully",
+            icon: "success",
+            width: '300px',
+            position: 'bottom-end',
+            toast: true,
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            background: '#d4edda',
+            color: '#155724',
+        }).then(() => {
+            window.location.href = "user-products.html";
+        })
+    }
+}

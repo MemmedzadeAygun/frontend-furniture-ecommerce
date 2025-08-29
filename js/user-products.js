@@ -2,7 +2,7 @@ document.getElementById('newproduct').addEventListener('click', () => {
     window.location.href = "newProduct.html";
 })
 
-function loadOnTable(){
+function loadOnTable() {
     let products = JSON.parse(localStorage.getItem('products')) || [];
     let logedInUser = JSON.parse(localStorage.getItem('logedInUser'));
     if (!logedInUser) {
@@ -28,6 +28,7 @@ function loadOnTable(){
                 <td>${product.rating}</td>
                 <td>
                     <button type="button" class="btn btn-primary edit-btn" data-id="${product.id}">Edit</button>
+                    <button type="button" class="btn btn-danger delete-btn" data-id="${product.id}">Delete</button>
                 </td>
             </tr>
         `
@@ -43,5 +44,34 @@ document.addEventListener('click', (e) => {
         let productId = e.target.getAttribute('data-id');
         console.log(productId);
         window.location.href = `newProduct.html?id=${productId}`
+    }
+})
+
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete-btn')) {
+        let productid = e.target.getAttribute('data-id');
+        console.log(productid);
+
+        let products = JSON.parse(localStorage.getItem('products')) || [];
+
+        if (confirm("Are you sure delete this product?")) {
+            products = products.filter(product => product.id != productid);
+            localStorage.setItem('products', JSON.stringify(products));
+            Swal.fire({
+                title: "Product delete successfully",
+                icon: "success",
+                width: '300px',
+                position: 'bottom-end',
+                toast: true,
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                background: '#d4edda',
+                color: '#155724',
+            }).then(() => {
+                loadOnTable();
+            })
+        }
+
     }
 })
