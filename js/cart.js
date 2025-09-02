@@ -55,3 +55,21 @@ function loadOnTable(){
 }
 
 loadOnTable();
+
+function deleteFromCart(){
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('delete-btn')) {
+            let cartId = Number(e.target.getAttribute('data-id'));
+            if (confirm("Are you sure you want to delete product from your cart?")) {
+                let productOnTheCard = JSON.parse(localStorage.getItem('productOnTheCard')) || [];
+                productOnTheCard = productOnTheCard.filter(cart => cart.cart_id !== cartId);
+                
+                localStorage.setItem('productOnTheCard',JSON.stringify(productOnTheCard));
+                // loadOnTable();
+                window.location.href = "cart.html";
+            }
+        }
+    });
+}
+
+deleteFromCart();
