@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./css/shop.css">
-    <title>Shop</title>
+    <link rel="stylesheet" href="./css/product-detail.css">
+    <title>Product</title>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
                     <li><a href="./profile.html"><img src="./img/user.png" alt=""></a></li>
                     <li><a href="#"><img src="./img/search.png" alt=""></a></li>
                     <li><a href="#"><img src="./img/heart.png" alt=""></li>
-                    <li><a href="./cart.html"><img src="./img/shoppingcart.png" alt=""></li>
+                    <li><a href="#"><img src="./img/shoppingcart.png" alt=""></li>
                     <li><a href="#"><button id="log-out">Log out</button></a></li>
                 </ul>
             </div>
@@ -37,32 +37,37 @@
     <main>
         <div class="sub-main">
             <div class="left-side">
-                <div class="shop">
-                    <h2>Shop</h2>
-                    <input type="search" id="searchInput" placeholder="Search" oninput="searchProducts()">
-                    <h3>Category</h3>
-                </div>
-                <div class="rate">
-                    <h3>Rate</h3>
-                    <p><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i
-                            class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i
-                            class="fa-solid fa-star"></i> </p>
-                    <p><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i
-                            class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i></p>
-                    <p><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i
-                            class="fa-solid fa-star"></i></p>
-                    <p><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i></p>
-                    <p><i class="fa-solid fa-star"></i></p>
+                <p>Product page</p>
+                <div class="product-image">
+                    <img src="" alt="">
                 </div>
             </div>
             <div class="right-side">
-                <button id="all-products-btn">All products</button> <br>
-                <select name="" id="sortSelect">
-                    <option value="">Sort by</option>
-                    <option value="priceAsc">Price: Low to high</option>
-                    <option value="priceDesc">Price: high to Low</option>
-                </select>
-                <div class="products">
+                <h2></h2>
+                <p id="rating"></p>
+                <p id="price"></p>
+                <p id="brand"></p>
+                <hr class="custom-hr">
+                <button id="add-to-cart">Add to Cart</button>
+                <div class="boxes">
+                    <div class="box">
+                        <div class="icon">
+                            <img src="./img/3d-cube.png" alt="">
+                        </div>
+                        <div class="detail">
+                            <h3>Free Delivery</h3>
+                            <p><a href="#">Enter your postal code for delivery Availability</a></p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="icon">
+                            <img src="./img/refresh.png" alt="">
+                        </div>
+                        <div class="detail">
+                            <h3>Return Delivery</h3>
+                            <p><a href="#">free 30 Days Delivery Returns.Details</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -100,7 +105,7 @@
     </footer>
 
 
-    <script src="./js/shop.js"></script>
+    <script src="./js/product-detail.js"></script>
 </body>
 
 </html>
